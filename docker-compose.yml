@@ -1,0 +1,28 @@
+version: '3'
+services:
+  flaskapp1:
+    build: ./flaskapp1
+    container_name: api1-Theodoro-10401614
+    hostname: api1-Theodoro-10401614
+    networks:
+      - webnet
+
+  flaskapp2:
+    build: ./flaskapp2
+    container_name: api2-Theodoro-10401614
+    hostname: api2-Theodoro-10401614
+    networks:
+      - webnet
+
+  nginx:
+    build: ./nginx
+    container_name: balanceador-Theodoro-10401614
+    hostname: balanceador-Theodoro-10401614
+    ports:
+      - "5000:80"
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: bridge
